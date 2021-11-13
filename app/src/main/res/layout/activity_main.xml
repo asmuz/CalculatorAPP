@@ -63,6 +63,7 @@
             style="@style/buttonNumber"
             android:text="" />
         <Button
+            android:id="@+id/division"
             style="@style/buttonOperator"
             android:text="/"/>
 
@@ -72,15 +73,19 @@
         style="@style/buttonRow">
 
         <Button
+            android:id="@+id/seven"
             style="@style/buttonNumber"
             android:text="7"/>
         <Button
+            android:id="@+id/eight"
             style="@style/buttonNumber"
             android:text="8"/>
         <Button
+            android:id="@+id/nine"
             style="@style/buttonNumber"
             android:text="9" />
         <Button
+            android:id="@+id/multi"
             style="@style/buttonOperator"
             android:text="x"/>
 
@@ -90,15 +95,19 @@
         style="@style/buttonRow">
 
         <Button
+            android:id="@+id/four"
             style="@style/buttonNumber"
             android:text="4"/>
         <Button
+            android:id="@+id/five"
             style="@style/buttonNumber"
             android:text="5"/>
         <Button
+            android:id="@+id/six"
             style="@style/buttonNumber"
             android:text="6" />
         <Button
+            android:id="@+id/minus"
             style="@style/buttonOperator"
             android:text="-"/>
 
@@ -108,15 +117,19 @@
         style="@style/buttonRow">
 
         <Button
+            android:id="@+id/one"
             style="@style/buttonNumber"
             android:text="1"/>
         <Button
+            android:id="@+id/two"
             style="@style/buttonNumber"
             android:text="2"/>
         <Button
+            android:id="@+id/three"
             style="@style/buttonNumber"
             android:text="3" />
         <Button
+            android:id="@+id/plus"
             style="@style/buttonOperator"
             android:text="+"/>
 
@@ -129,6 +142,7 @@
             style="@style/buttonNumber"
             android:text="."/>
         <Button
+            android:id="@+id/zero"
             style="@style/buttonNumber"
             android:text="0"/>
         <Button
