@@ -15,7 +15,7 @@
         android:layout_weight="2"
         android:padding="20dp">
 
-        <TextView
+       <TextView
             android:id="@+id/workingsTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,11 +52,13 @@
 
         <Button
             style="@style/buttonNumber"
+            android:onClick="clearClick"
             android:textColor="@color/white"
             android:background="@color/red"
             android:text="C"/>
         <Button
             style="@style/buttonNumber"
+            android:onClick="deleteClick"
             android:textColor="@color/red"
             android:text="Del"/>
         <Button
@@ -64,6 +66,7 @@
             android:text="" />
         <Button
             android:id="@+id/division"
+            android:onClick="clickDivide"
             style="@style/buttonOperator"
             android:text="/"/>
 
@@ -74,18 +77,22 @@
 
         <Button
             android:id="@+id/seven"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="7"/>
         <Button
             android:id="@+id/eight"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="8"/>
         <Button
             android:id="@+id/nine"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="9" />
         <Button
             android:id="@+id/multi"
+            android:onClick="clickMultiply"
             style="@style/buttonOperator"
             android:text="x"/>
 
@@ -96,18 +103,22 @@
 
         <Button
             android:id="@+id/four"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="4"/>
         <Button
             android:id="@+id/five"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="5"/>
         <Button
             android:id="@+id/six"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="6" />
         <Button
             android:id="@+id/minus"
+            android:onClick="clickMinus"
             style="@style/buttonOperator"
             android:text="-"/>
 
@@ -118,18 +129,22 @@
 
         <Button
             android:id="@+id/one"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="1"/>
         <Button
             android:id="@+id/two"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="2"/>
         <Button
             android:id="@+id/three"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="3" />
         <Button
             android:id="@+id/plus"
+            android:onClick="clickPlus"
             style="@style/buttonOperator"
             android:text="+"/>
 
@@ -143,10 +158,12 @@
             android:text="."/>
         <Button
             android:id="@+id/zero"
+            android:onClick="numberClick"
             style="@style/buttonNumber"
             android:text="0"/>
         <Button
             style="@style/buttonNumber"
+            android:onClick="equalsClick"
             android:layout_weight="2"
             android:background="@color/orange"
             android:textSize="40sp"
