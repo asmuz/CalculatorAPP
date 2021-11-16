@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private String input = "";
     private String result = "0";
     private TextView resultsTV, workingsTV;
-    private String buttonValue, operatorValue;
+    private String buttonValue, operatorValue, lastChar;
     private boolean dot, operator;
 
     @Override
@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
             input = "0.";
             dot = true;
         }
+        if(input.substring(input.length()-1).equals(" ")) if (!dot) {
+            input += "0.";
+            dot = true;
+        }
         if(!dot){
             input += ".";
             dot = true;
@@ -45,38 +49,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void operatorsClick(View view) {
+        if(operator){
+            calcResult();
+        }
         operatorValue = ((Button) view).getText().toString();
-        dot = false;
         if(!input.isEmpty()){
-            if(input.substring(input.length()-1, input.length()).equals(".")){
+            lastChar = input.substring(input.length()-1);
+            if(lastChar.equals(".")){
                 backspace();
             }
             if(!operator){
-                input += operatorValue;
+                input = input + " " + operatorValue + " ";
                 operator = true;
             }
+            dot = false;
         }
         displayCurrent();
     }
 
-    public void clickPlus(View view) {
-
-    }
-
-    public void clickMinus(View view) {
-    }
-
-    public void clickMultiply(View view) {
-    }
-
-    public void clickDivide(View view) {
-    }
-
     public void equalsClick(View view) {
+        calcResult();
     }
 
     public void deleteClick(View view) {
-        backspace();
+        if(!input.isEmpty()){
+            lastChar = input.substring(input.length()-1);
+            if(lastChar.equals(".")){
+                dot = false;
+            }
+            if(lastChar.equals(" ")){
+                operator = false;
+                backspace();
+                backspace();
+            }
+            backspace();
+        }
     }
 
     public void backspace() {
@@ -84,6 +91,32 @@ public class MainActivity extends AppCompatActivity {
             input = input.substring(0,input.length()-1);
             displayCurrent();
         }
+    }
+
+    private void calcResult() {
+        lastChar = input.substring(input.length()-1);
+        if(!lastChar.equals(" ")){
+            if(operator){
+                String[] tokens = input.split(" ");
+                Double firstArg = Double.parseDouble(tokens[0]);
+                Double secondArg = Double.parseDouble(tokens[2]);
+                switch (tokens[1]) {
+                    case "+":
+                        result = Double.toString(firstArg + secondArg);
+                        break;
+                    case "-":
+                        result = Double.toString(firstArg - secondArg);
+                        break;
+                    case "x":
+                        result = Double.toString(firstArg * secondArg);
+                        break;
+                    case "/":
+                        result = Double.toString(firstArg / secondArg);
+                        break;
+                }
+            }
+        }
+        displayResult();
     }
 
     public void clearClick(View view) {
