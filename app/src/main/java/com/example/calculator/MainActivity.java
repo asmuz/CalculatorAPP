@@ -9,8 +9,8 @@ import android.widget.*;
 public class MainActivity extends AppCompatActivity {
 
     private String input = "";
-    private String result = "0";
-    private TextView resultsTV, workingsTV;
+    private Double result;
+    private TextView resultsTV;
     private String buttonValue, operatorValue, lastChar;
     private boolean dot, operator;
 
@@ -18,10 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         resultsTV = findViewById(R.id.resultsTV);
-        workingsTV = findViewById(R.id.workingsTV);
-
         dot = false;
         operator = false;
     }
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public void numberClick(View view) {
         buttonValue = ((Button) view).getText().toString();
         input += buttonValue;
-        displayCurrent();
+        displayResult();
     }
 
     public void dotClick(View view) {
@@ -45,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             input += ".";
             dot = true;
         }
-        displayCurrent();
+        displayResult();
     }
 
     public void operatorsClick(View view) {
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
             dot = false;
         }
-        displayCurrent();
+        displayResult();
     }
 
     public void equalsClick(View view) {
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     public void backspace() {
         if(!input.isEmpty()){
             input = input.substring(0,input.length()-1);
-            displayCurrent();
+            displayResult();
         }
     }
 
@@ -102,37 +99,42 @@ public class MainActivity extends AppCompatActivity {
                 Double secondArg = Double.parseDouble(tokens[2]);
                 switch (tokens[1]) {
                     case "+":
-                        result = Double.toString(firstArg + secondArg);
+                        result = firstArg + secondArg;
                         break;
                     case "-":
-                        result = Double.toString(firstArg - secondArg);
+                        result = firstArg - secondArg;
                         break;
                     case "x":
-                        result = Double.toString(firstArg * secondArg);
+                        result = firstArg * secondArg;
                         break;
                     case "/":
-                        result = Double.toString(firstArg / secondArg);
+                        result = firstArg / secondArg;
                         break;
                 }
             }
         }
+        if (result % 1 == 0) {
+            int aaa = (int) Math.round(result);
+            input = Integer.toString(aaa);
+        }
+        else
+        {
+            input = Double.toString(result);
+
+        }
+        operator = false;
         displayResult();
     }
 
     public void clearClick(View view) {
         input = "";
-        result = "0";
+        result = 0.0;
         dot = false;
         operator = false;
-        displayCurrent();
         displayResult();
     }
 
-    private void displayCurrent() {
-        workingsTV.setText(input);
-    }
-
     private void displayResult() {
-        resultsTV.setText(result);
+        resultsTV.setText(input);
     }
 }
