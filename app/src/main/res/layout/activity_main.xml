@@ -68,7 +68,7 @@
             android:text="" />
         <Button
             android:id="@+id/division"
-            android:onClick="clickDivide"
+            android:onClick="operatorsClick"
             style="@style/buttonOperator"
             android:text="/"/>
 
@@ -94,7 +94,7 @@
             android:text="9" />
         <Button
             android:id="@+id/multi"
-            android:onClick="clickMultiply"
+            android:onClick="operatorsClick"
             style="@style/buttonOperator"
             android:text="x"/>
 
@@ -120,7 +120,7 @@
             android:text="6" />
         <Button
             android:id="@+id/minus"
-            android:onClick="clickMinus"
+            android:onClick="operatorsClick"
             style="@style/buttonOperator"
             android:text="-"/>
 
@@ -146,7 +146,7 @@
             android:text="3" />
         <Button
             android:id="@+id/plus"
-            android:onClick="clickPlus"
+            android:onClick="operatorsClick"
             style="@style/buttonOperator"
             android:text="+"/>
 

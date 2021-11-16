@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private String input = "";
     private String result = "0";
     private TextView resultsTV, workingsTV;
-    private String buttonValue;
+    private String buttonValue, operatorValue;
     private boolean dot, operator;
 
     @Override
@@ -44,7 +44,23 @@ public class MainActivity extends AppCompatActivity {
         displayCurrent();
     }
 
+    public void operatorsClick(View view) {
+        operatorValue = ((Button) view).getText().toString();
+        dot = false;
+        if(!input.isEmpty()){
+            if(input.substring(input.length()-1, input.length()).equals(".")){
+                backspace();
+            }
+            if(!operator){
+                input += operatorValue;
+                operator = true;
+            }
+        }
+        displayCurrent();
+    }
+
     public void clickPlus(View view) {
+
     }
 
     public void clickMinus(View view) {
@@ -60,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteClick(View view) {
+        backspace();
+    }
+
+    public void backspace() {
         if(!input.isEmpty()){
             input = input.substring(0,input.length()-1);
             displayCurrent();
