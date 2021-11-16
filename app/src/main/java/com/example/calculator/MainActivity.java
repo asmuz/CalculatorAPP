@@ -8,64 +8,78 @@ import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int inputValue;
-    private int result = 0;
-    private String display = "";
-    private StringBuilder inputStr = new StringBuilder();
-    private TextView resultsTV;
+    private String input = "";
+    private String result = "0";
+    private TextView resultsTV, workingsTV;
+    private String buttonValue;
+    private boolean dot, operator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         resultsTV = findViewById(R.id.resultsTV);
+        workingsTV = findViewById(R.id.workingsTV);
+
+        dot = false;
+        operator = false;
     }
 
     public void numberClick(View view) {
-        String buttonValue = ((Button) view).getText().toString();
-        inputStr.append(buttonValue);
-        inputValue = Integer.parseInt(inputStr.toString());
-        resultsTV.setText(display + inputStr);
+        buttonValue = ((Button) view).getText().toString();
+        input += buttonValue;
+        displayCurrent();
+    }
+
+    public void dotClick(View view) {
+        if(input.isEmpty()){
+            input = "0.";
+            dot = true;
+        }
+        if(!dot){
+            input += ".";
+            dot = true;
+        }
+        displayCurrent();
     }
 
     public void clickPlus(View view) {
-        result = result + inputValue;
-        inputValue = 0;
-        display = (result + "+").toString();
-        inputStr.setLength(0);
-        resultsTV.setText(String.valueOf(display));
-
     }
 
     public void clickMinus(View view) {
-        result = result - inputValue;
-        inputValue = 0;
-        display = (result + "-").toString();
-        inputStr.setLength(0);
-        resultsTV.setText(String.valueOf(display));
     }
 
     public void clickMultiply(View view) {
-
     }
 
     public void clickDivide(View view) {
-
     }
 
     public void equalsClick(View view) {
     }
 
     public void deleteClick(View view) {
-        inputStr.setLength(inputStr.length() -1);
-        resultsTV.setText(inputStr);
+        if(!input.isEmpty()){
+            input = input.substring(0,input.length()-1);
+            displayCurrent();
+        }
     }
 
     public void clearClick(View view) {
-        display = "";
-        inputValue = 0;
-        result = 0;
-        inputStr.setLength(0);
-        resultsTV.setText("0");
+        input = "";
+        result = "0";
+        dot = false;
+        operator = false;
+        displayCurrent();
+        displayResult();
+    }
+
+    private void displayCurrent() {
+        workingsTV.setText(input);
+    }
+
+    private void displayResult() {
+        resultsTV.setText(result);
     }
 }
