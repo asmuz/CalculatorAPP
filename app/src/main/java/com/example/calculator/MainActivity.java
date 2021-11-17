@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         resultsTV = findViewById(R.id.resultsTV);
         dot = false;
         operator = false;
-        displayResult();
     }
 
     public void numberClick(View view) {
