@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         if(!display.equals("0")) {
             display += buttonValue;
         }
-        if(display.equals("0") && !buttonValue.equals("0")) {
+        if(display.equals("0")) {
             backspace();
             display += buttonValue;
         }
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void dotClick(View view) {
-        if(display.isEmpty()){
+        if(display.equals("0")){
             display = "0.";
             dot = true;
         }
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             calcResult();
         }
         operatorValue = ((Button) view).getText().toString();
-        if(!display.isEmpty()){
+        if(!display.equals("0")){
             lastChar = display.substring(display.length()-1);
             if(lastChar.equals(".")){
                 backspace();
@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteClick(View view) {
-        if(!display.isEmpty()){
             lastChar = display.substring(display.length()-1);
             if(lastChar.equals(".")){
                 dot = false;
@@ -88,14 +87,16 @@ public class MainActivity extends AppCompatActivity {
                 backspace();
             }
             backspace();
+
+        if(display.length() == 0){
+            display = "0";
+            displayResult();
         }
     }
 
     public void backspace() {
-        if(!display.isEmpty()){
-            display = display.substring(0, display.length()-1);
-            displayResult();
-        }
+        display = display.substring(0, display.length()-1);
+        displayResult();
     }
 
     private void calcResult() {
