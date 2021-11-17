@@ -8,7 +8,7 @@ import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String input = "";
+    private String display;
     private Double result;
     private TextView resultsTV;
     private String buttonValue, operatorValue, lastChar;
@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        display = "0";
         resultsTV = findViewById(R.id.resultsTV);
         dot = false;
         operator = false;
@@ -25,21 +26,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void numberClick(View view) {
         buttonValue = ((Button) view).getText().toString();
-        input += buttonValue;
+        if(!display.equals("0")) {
+            display += buttonValue;
+        }
+        if(display.equals("0")) {
+            backspace();
+            display += buttonValue;
+        }
         displayResult();
     }
 
     public void dotClick(View view) {
-        if(input.isEmpty()){
-            input = "0.";
+        if(display.equals("0")){
+            display = "0.";
             dot = true;
         }
-        if(input.substring(input.length()-1).equals(" ")) if (!dot) {
-            input += "0.";
+        if(display.substring(display.length()-1).equals(" ")) if (!dot) {
+            display += "0.";
             dot = true;
         }
         if(!dot){
-            input += ".";
+            display += ".";
             dot = true;
         }
         displayResult();
@@ -50,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
             calcResult();
         }
         operatorValue = ((Button) view).getText().toString();
-        if(!input.isEmpty()){
-            lastChar = input.substring(input.length()-1);
+        if(!display.equals("0")){
+            lastChar = display.substring(display.length()-1);
             if(lastChar.equals(".")){
                 backspace();
             }
             if(!operator){
-                input = input + " " + operatorValue + " ";
+                display = display + " " + operatorValue + " ";
                 operator = true;
             }
             dot = false;
@@ -69,8 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteClick(View view) {
-        if(!input.isEmpty()){
-            lastChar = input.substring(input.length()-1);
+            lastChar = display.substring(display.length()-1);
             if(lastChar.equals(".")){
                 dot = false;
             }
@@ -80,21 +86,23 @@ public class MainActivity extends AppCompatActivity {
                 backspace();
             }
             backspace();
-        }
-    }
 
-    public void backspace() {
-        if(!input.isEmpty()){
-            input = input.substring(0,input.length()-1);
+        if(display.length() == 0){
+            display = "0";
             displayResult();
         }
     }
 
+    public void backspace() {
+        display = display.substring(0, display.length()-1);
+        displayResult();
+    }
+
     private void calcResult() {
-        lastChar = input.substring(input.length()-1);
+        lastChar = display.substring(display.length()-1);
         if(!lastChar.equals(" ")){
             if(operator){
-                String[] tokens = input.split(" ");
+                String[] tokens = display.split(" ");
                 Double firstArg = Double.parseDouble(tokens[0]);
                 Double secondArg = Double.parseDouble(tokens[2]);
                 switch (tokens[1]) {
@@ -115,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if (result % 1 == 0) {
             int aaa = (int) Math.round(result);
-            input = Integer.toString(aaa);
+            display = Integer.toString(aaa);
         }
         else
         {
-            input = Double.toString(result);
+            display = Double.toString(result);
 
         }
         operator = false;
@@ -127,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clearClick(View view) {
-        input = "";
+        display = "0";
         result = 0.0;
         dot = false;
         operator = false;
@@ -135,6 +143,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayResult() {
-        resultsTV.setText(input);
+        resultsTV.setText(display);
     }
 }
