@@ -26,13 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void numberClick(View view) {
         buttonValue = ((Button) view).getText().toString();
-        if(!display.equals("0")) {
-            display += buttonValue;
-        }
         if(display.equals("0")) {
             backspace();
-            display += buttonValue;
         }
+        display += buttonValue;
         displayResult();
     }
 
@@ -54,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void operatorsClick(View view) {
         if(operator){
-            calcResult();
+            calculation();
         }
         operatorValue = ((Button) view).getText().toString();
         if(!display.equals("0")){
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalsClick(View view) {
-        calcResult();
+        calculation();
     }
 
     public void deleteClick(View view) {
@@ -93,12 +90,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void clearClick(View view) {
+        display = "0";
+        result = 0.0;
+        dot = false;
+        operator = false;
+        displayResult();
+    }
+
     public void backspace() {
         display = display.substring(0, display.length()-1);
         displayResult();
     }
 
-    private void calcResult() {
+    private void calculation() {
         lastChar = display.substring(display.length()-1);
         if(!lastChar.equals(" ")){
             if(operator){
@@ -122,22 +127,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (result % 1 == 0) {
-            int aaa = (int) Math.round(result);
-            display = Integer.toString(aaa);
+            int resultInteger = (int) Math.round(result);
+            display = Integer.toString(resultInteger);
         }
         else
         {
             display = Double.toString(result);
 
         }
-        operator = false;
-        displayResult();
-    }
-
-    public void clearClick(View view) {
-        display = "0";
-        result = 0.0;
-        dot = false;
         operator = false;
         displayResult();
     }
