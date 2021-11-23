@@ -5,4 +5,6 @@
     <color name="orange">#CC5500</color>
     <color name="appBG">#000</color>
     <color name="buttonBG">#333</color>
+    <color name="operatorButton">#fff</color>
+    <color name="numberButton">#fff</color>
 </resources>
