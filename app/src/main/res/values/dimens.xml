@@ -2,5 +2,8 @@
 <resources>
     <dimen name="buttonTextSize">20sp</dimen>
     <dimen name="buttonMargin">2dp</dimen>
-    <dimen name="marginVertical">0dp</dimen>
+    <dimen name="marginVertical">2dp</dimen>
+    <dimen name="resultSize">48sp</dimen>
+    <dimen name="resultLineHeight">60dp</dimen>
+    <dimen name="resultPadding">20dp</dimen>
 </resources>
