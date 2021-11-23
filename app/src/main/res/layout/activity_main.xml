@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/appBG"
     tools:ignore="HardcodedText"
     tools:context=".MainActivity">
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
+        android:background="#ddd"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
@@ -19,143 +20,147 @@
             android:id="@+id/resultsTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AsmuZ Calculator"
+            android:fontFamily="@font/calculator"
             android:lineHeight="60dp"
             android:lines="2"
             android:maxLines="2"
-            android:textColor="@color/white"
+            android:text="@string/app_name"
             android:textAlignment="textEnd"
+            android:textColor="#333"
             android:textSize="48sp"
-            android:fontFamily="@font/calculator"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <LinearLayout
-        style="@style/buttonRow">
+        style="@style/buttonRow"
+        android:layout_marginVertical="@dimen/marginVertical">
 
-        <Button
-            style="@style/buttonNumber"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="clearClick"
-            android:textColor="@color/white"
-            android:background="@color/red"
             android:text="C"/>
-        <Button
-            style="@style/buttonNumber"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="deleteClick"
-            android:textColor="@color/red"
             android:text="Del"/>
-        <Button
-            style="@style/buttonNumber"
-            android:text="" />
-        <Button
-            android:id="@+id/division"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
+            app:icon="@drawable/options"/>
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="operatorsClick"
-            style="@style/buttonOperator"
             android:text="/"/>
 
     </LinearLayout>
 
     <LinearLayout
-        style="@style/buttonRow">
+        style="@style/buttonRow"
+        android:layout_marginVertical="@dimen/marginVertical">
 
-        <Button
-            android:id="@+id/seven"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="7"/>
-        <Button
-            android:id="@+id/eight"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="8"/>
-        <Button
-            android:id="@+id/nine"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="9" />
-        <Button
-            android:id="@+id/multi"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="operatorsClick"
-            style="@style/buttonOperator"
             android:text="x"/>
 
     </LinearLayout>
 
     <LinearLayout
-        style="@style/buttonRow">
+        style="@style/buttonRow"
+        android:layout_marginVertical="@dimen/marginVertical">
 
-        <Button
-            android:id="@+id/four"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="4"/>
-        <Button
-            android:id="@+id/five"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="5"/>
-        <Button
-            android:id="@+id/six"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="6" />
-        <Button
-            android:id="@+id/minus"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="operatorsClick"
-            style="@style/buttonOperator"
             android:text="-"/>
 
     </LinearLayout>
 
     <LinearLayout
-        style="@style/buttonRow">
+        style="@style/buttonRow"
+        android:layout_marginVertical="@dimen/marginVertical">
 
-        <Button
-            android:id="@+id/one"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="1"/>
-        <Button
-            android:id="@+id/two"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="2"/>
-        <Button
-            android:id="@+id/three"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="3" />
-        <Button
-            android:id="@+id/plus"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="operatorsClick"
-            style="@style/buttonOperator"
             android:text="+"/>
 
     </LinearLayout>
 
     <LinearLayout
-        style="@style/buttonRow">
+        style="@style/buttonRow"
+        android:layout_marginVertical="@dimen/marginVertical">
 
-        <Button
-            android:id="@+id/dot"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="dotClick"
-            style="@style/buttonNumber"
             android:text="."/>
-        <Button
-            android:id="@+id/zero"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="numberClick"
-            style="@style/buttonNumber"
             android:text="0"/>
-        <Button
-            style="@style/buttonNumber"
+        <com.google.android.material.button.MaterialButton
+            style="@style/button"
+            android:layout_marginHorizontal="@dimen/buttonMargin"
             android:onClick="equalsClick"
             android:layout_weight="2"
-            android:background="@color/orange"
-            android:textSize="40sp"
             android:text="=" />
 
     </LinearLayout>
